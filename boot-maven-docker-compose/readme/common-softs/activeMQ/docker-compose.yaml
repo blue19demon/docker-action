@@ -1,0 +1,17 @@
+version: '2'
+services:
+  #activemq容器
+  activemq:
+    #定义主机名
+    hostname: myactivemq
+    #使用的镜像
+    image: webcenter/activemq
+    #容器的映射端口
+    ports:
+      - 61617:61616
+      - 8162:8161
+    restart: always
+    #定义挂载点
+    volumes:
+      - ./data/activemq:/data/activemq
+      - ./var/log/activemq:/var/log/activemq

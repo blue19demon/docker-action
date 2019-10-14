@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: boot-maven-docker-compose
+  thymeleaf:
+    prefix: classpath:/templates/
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/testdb?useSSL=false
+    username: root
+    password: root
+server:
+  port: ${appPort:7777}
+  #additionalPorts: 8888,9999
+  context-path: /
+#logstash配置，这个由于占用内存太多，使用filebeat替代
+logstash: 
+  host: 192.168.31.128
+  port: 4560
+    

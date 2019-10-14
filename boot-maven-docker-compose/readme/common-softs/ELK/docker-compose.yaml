@@ -1,0 +1,53 @@
+version: '2'
+services:
+  elasticsearch:
+    image: elasticsearch:5.6.5
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - $PWD/elasticsearch/data:/usr/share/elasticsearch/data
+      - $PWD/es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    container_name: elasticsearch
+    #hostname: elasticsearch
+    restart: always
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - elk
+  kibana:
+    image: kibana:5.6.5
+    environment:
+      - ELASTICSEARCH_URL=http://192.168.31.128:9200 #elasticsearch查询接口地址
+    container_name: kibana
+    #hostname: kibana
+    depends_on:
+      - elasticsearch  #后于elasticsearch启动
+    restart: always
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    links:
+      - elasticsearch
+  logstash:
+    image: monsantoco/logstash
+    container_name: logstash
+    #hostname: logstash
+    volumes:
+      - $PWD/logstash/conf.d:/etc/logstash/conf.d  #logstash 配文件位置
+      - $PWD/logst:/tmp
+    depends_on:
+      - elasticsearch  #后于elasticsearch启动
+    restart: always
+    ports:
+      - "7001-7005:7001-7005"
+      - "4560:4560"
+      - "9600:9600"
+    networks:
+      - elk
+    links:
+      - elasticsearch
+networks:
+  elk:
+    driver: bridge

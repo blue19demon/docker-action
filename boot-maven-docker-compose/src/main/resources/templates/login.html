@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"/>
+</head>
+
+<body style="text-align: center">
+    <div>
+        <input name="loginName" type="text" placeholder="输入你的账号" />
+    </div>
+    <div class="form-group has-feedback">
+        <input name="loginPwd" type="password" placeholder="输入你的密码" />
+    </div>
+    <div>
+        <button onclick="signIn()">点击我</button>
+    </div>
+
+    <!-- 根路径 -->
+    <script type="text/javascript">
+
+        $(function () {
+            $.ajaxSetup({
+                //发送请求前运行的函数。
+                beforeSend: function (request) {
+                    request.setRequestHeader("token", $.cookie('token'));
+                },
+                //请求完成时运行的函数（在请求成功或失败之后均调用，即在 success 和 error 函数之后）。
+                error: function (jqXHR, textStatus, errorThrown) {
+                    switch (jqXHR.status) {
+                        case (500):
+                            alert('服务器系统内部错误');
+                            break;
+                        case (404):
+                            alert('地址错误');
+                            break;
+                        default:
+                            console.log("未知错误");
+                    }
+                }
+            });
+        });
+
+        var urlHead = 'http://127.0.0.1:7777';
+
+        function post(url, params, fn) {
+            $.post(url, params, function (data) {
+                if (data.code == 504) {
+                    alert("Session time out");
+                    return;
+                } else if (data.code != 200) {
+                    alert(data.message);
+                    return;
+                }
+                fn(data);
+            });
+        }
+
+        //登录ajax，登录成功后获取后台返回的token，并把token保存到cookie中
+        function signIn() {
+            let username = $("input[name='loginName']").val();
+            let password = $("input[name='loginPwd']").val();
+            post(urlHead + "/ssoLogin", { username: username, password: password }, function (result) {
+                $.cookie('token', result.data);
+                loadDeptTree();
+            });
+        }
+
+        //请求数据的ajax，需要从cookie读取token放入head传给后台。
+        function loadDeptTree() {
+            post(urlHead + "/dept/tree", {}, function (result) {
+                 alert('部门->'+result.data);
+                 post(urlHead + "/dept/tree01", {}, function (result) {
+                      alert('部门01->'+result.data);
+                 });
+            });
+        }
+ </script>
+</body>
+</html>

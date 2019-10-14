@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include
+		resource="org/springframework/boot/logging/logback/base.xml" />
+	<property resource="application.yml" />
+	<springProperty scope="context" name="LOGSTASH_HOST"
+		source="logstash.host" />
+	<springProperty scope="context" name="LOGSTASH_PORT"
+		source="logstash.port" />
+	<!-- <springProperty scope="context" name="APP_NAME"
+		source="spring.application.name" /> -->
+	<property name="APP_NAME" value="boot-maven-docker-compose" />
+    <property name="log.path" value="logs" />
+    
+	<!--输出到文件 -->
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${APP_NAME}-%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+			<totalSizeCap>1GB</totalSizeCap>
+			<maxFileSize>100MB</maxFileSize>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level
+				%logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="LOGSTASH"
+		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<!-- logstash 输入地址 与logstash.conf 配置文件的input对应 -->
+		<destination>${LOGSTASH_HOST}:${LOGSTASH_PORT}</destination>
+		<encoder charset="UTF-8"
+			class="net.logstash.logback.encoder.LogstashEncoder" />
+	</appender>
+
+	<root level="INFO">
+	    <appender-ref ref="LOGSTASH" /> 
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

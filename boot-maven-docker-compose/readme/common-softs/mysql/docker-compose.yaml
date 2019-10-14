@@ -1,0 +1,26 @@
+version: '2'
+services:
+    mysql:
+        image: mysql:5.7.17
+        ports:
+        - 3307:3306
+        environment:
+        - "MYSQL_ROOT_PASSWORD=root"
+        - "MYSQL_DATABASE=testdb"
+        - "MYSQL_ROOT_HOST=%"
+        networks:
+        - net-spring-db
+        command: [
+          'mysqld',
+          '--innodb-buffer-pool-size=20M',
+          '--character-set-server=utf8',
+          '--collation-server=utf8_general_ci',
+          '--default-time-zone=+8:00',
+          '--lower-case-table-names=1'
+        ]
+        volumes:
+        - ./mysql_data:/var/lib/mysql
+        restart: always
+networks:
+  net-spring-db:
+    driver: bridge

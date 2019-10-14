@@ -1,0 +1,10 @@
+version: '2'
+services:
+  elasticsearch-head:
+    image: mobz/elasticsearch-head:5
+    container_name: elasticsearch-head
+    volumes:
+       - /root/es_docker/head/Gruntfile.js
+       - /usr/src/app/Gruntfile.js
+    ports:
+       - "9100:9100"

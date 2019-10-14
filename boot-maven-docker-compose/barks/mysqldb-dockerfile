@@ -1,0 +1,5 @@
+FROM mysql:5.7.17
+ 
+MAINTAINER 1843080373@qq.com
+ 
+ADD init.sql /docker-entrypoint-initdb.d/

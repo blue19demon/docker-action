@@ -1,0 +1,17 @@
+version : '2'
+services:
+  springappserver:
+      container_name: springappserver
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+        - "8080:8080"
+      networks:
+        - net-spring-db
+      volumes:
+        - /vol/development
+ 
+networks:
+  net-spring-db:
+    driver: bridge

@@ -1,0 +1,80 @@
+09:50:12.082 default [main] INFO 
+				c.d.c.BootMavenDockerComposeApplication - Starting BootMavenDockerComposeApplication on USER-20161118UC with PID 10540 (started by Administrator in E:\GitHub\微服务\boot-maven-docker-compose)
+09:50:12.162 default [main] INFO 
+				c.d.c.BootMavenDockerComposeApplication - No active profile set, falling back to default profiles: default
+09:50:13.786 default [main] INFO 
+				o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@55a147cc: startup date [Wed Oct 09 09:50:13 CST 2019]; root of context hierarchy
+09:50:15.709 default [main] INFO 
+				o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 7777 (http)
+09:50:15.719 default [main] INFO 
+				o.a.catalina.core.StandardService - Starting service [Tomcat]
+09:50:15.719 default [main] INFO 
+				o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+09:50:15.859 default [localhost-startStop-1] INFO 
+				o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+09:50:15.859 default [localhost-startStop-1] INFO 
+				o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2073 ms
+09:50:16.208 default [localhost-startStop-1] INFO 
+				o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+09:50:16.208 default [localhost-startStop-1] INFO 
+				o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+09:50:16.208 default [localhost-startStop-1] INFO 
+				o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+09:50:16.208 default [localhost-startStop-1] INFO 
+				o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+09:50:16.208 default [localhost-startStop-1] INFO 
+				o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+09:50:17.138 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@55a147cc: startup date [Wed Oct 09 09:50:13 CST 2019]; root of context hierarchy
+09:50:17.206 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/dept/tree],methods=[POST]}" onto public com.docker.compose.common.CommonResponse<java.lang.String> com.docker.compose.controllers.JWTController.deptTree(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+09:50:17.208 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/dept/tree01],methods=[POST]}" onto public com.docker.compose.common.CommonResponse<java.lang.String> com.docker.compose.controllers.JWTController.tree01(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+09:50:17.208 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/ssoLogin],methods=[POST]}" onto public com.docker.compose.common.CommonResponse<java.lang.String> com.docker.compose.controllers.JWTController.ssoLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+09:50:17.211 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/test/insert01]}" onto public com.docker.compose.common.CommonResponse<?> com.docker.compose.controllers.OrderController.test1()
+09:50:17.211 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/test/insert02]}" onto public com.docker.compose.common.CommonResponse<?> com.docker.compose.controllers.OrderController.test2()
+09:50:17.212 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/test/insert03]}" onto public com.docker.compose.common.CommonResponse<?> com.docker.compose.controllers.OrderController.test3()
+09:50:17.212 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/test/insert04]}" onto public com.docker.compose.common.CommonResponse<?> com.docker.compose.controllers.OrderController.test4()
+09:50:17.213 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/test/insert05]}" onto public com.docker.compose.common.CommonResponse<?> com.docker.compose.controllers.OrderController.test5()
+09:50:17.214 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/pages/hello]}" onto public java.lang.String com.docker.compose.controllers.PageController.helloHtml(java.util.HashMap<java.lang.String, java.lang.Object>,org.springframework.ui.Model)
+09:50:17.214 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/pages/login]}" onto public java.lang.String com.docker.compose.controllers.PageController.login(java.util.HashMap<java.lang.String, java.lang.Object>,org.springframework.ui.Model)
+09:50:17.214 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/pages/dep/list]}" onto public java.lang.String com.docker.compose.controllers.PageController.depLists(java.util.HashMap<java.lang.String, java.lang.Object>,org.springframework.ui.Model)
+09:50:17.216 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/paramBinder/user]}" onto public com.docker.compose.common.CommonResponse<com.docker.compose.dto.User> com.docker.compose.controllers.ParamBinderController.user(com.docker.compose.dto.User)
+09:50:17.216 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/paramBinder/product]}" onto public com.docker.compose.common.CommonResponse<com.docker.compose.dto.Product> com.docker.compose.controllers.ParamBinderController.product(com.docker.compose.dto.Product)
+09:50:17.216 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/elk/data]}" onto public com.docker.compose.common.CommonResponse<java.util.List<java.util.Map<java.lang.String, java.lang.Object>>> com.docker.compose.controllers.TestController.data()
+09:50:17.218 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+09:50:17.227 default [main] INFO 
+				o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+09:50:17.239 default [main] INFO 
+				o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+09:50:17.239 default [main] INFO 
+				o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+09:50:17.269 default [main] INFO 
+				o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+09:50:18.759 default [main] INFO 
+				o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+09:50:18.829 default [main] INFO 
+				o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 7777 (http)
+09:50:18.829 default [main] INFO 
+				c.d.c.BootMavenDockerComposeApplication - Started BootMavenDockerComposeApplication in 7.037 seconds (JVM running for 9.423)
+09:51:55.689 default [http-nio-7777-exec-5] INFO 
+				o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+09:51:55.690 default [http-nio-7777-exec-5] INFO 
+				o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+09:51:55.707 default [http-nio-7777-exec-5] INFO 
+				o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 17 ms
+09:51:55.720 default [http-nio-7777-exec-5] INFO 
+				c.d.c.i.ParamBinderInterceptor - accessUri=/paramBinder/product

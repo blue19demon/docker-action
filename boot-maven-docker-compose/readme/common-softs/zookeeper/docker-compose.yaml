@@ -1,0 +1,12 @@
+version: '2'
+services:
+    zookeeper:
+        image: zookeeper
+        ports:
+        - 2181:2181
+        networks:
+        - net-spring-db
+        restart: always
+networks:
+  net-spring-db:
+    driver: bridge
